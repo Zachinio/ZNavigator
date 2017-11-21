@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ZNavigator</string>
+    <string name="navigation_tab1">Tab 1</string>
+    <string name="navigation_tab2">Tab 2</string>
+    <string name="navigation_tab3">Tab 3</string>
+</resources>
