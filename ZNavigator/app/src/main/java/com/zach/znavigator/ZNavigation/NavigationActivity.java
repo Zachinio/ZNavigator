@@ -60,7 +60,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements
                     .commit();
             modifyStack(fragment);
         } else {
-            FragmentWrapper fragmentWrapper = FragmentWrapper_.builder().build();
+            FragmentWrapper fragmentWrapper = new FragmentWrapper();
             fragmentWrapper.loadInnerFragment(selectedFragment);
             getSupportFragmentManager()
                     .beginTransaction()
@@ -124,7 +124,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements
                     .commit();
             fragmentsStack.remove(0);
             fragmentsStack.add(0, fragmentWrapper);
-            tabChanged(getItemIdByFragment(currentFragment));
+            tabChanged(getItemIdByFragment(fragmentWrapper));
             return;
         }
         fragmentsStack.remove(0);
@@ -140,7 +140,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements
 
     private void loadFirstTab() {
         Fragment firstFragment = rootFragments.values().iterator().next();
-        FragmentWrapper fragmentWrapper = FragmentWrapper_.builder().build();
+        FragmentWrapper fragmentWrapper = new FragmentWrapper();
         fragmentWrapper.loadInnerFragment(firstFragment);
         getSupportFragmentManager()
                 .beginTransaction()

@@ -1,26 +1,31 @@
 package com.zach.znavigator.ZNavigation;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.zach.znavigator.R;
 
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EFragment;
-
-@EFragment(R.layout.fragment_wrapper)
 public class FragmentWrapper extends Fragment {
 
     Fragment childFragment;
     private boolean isInflated = false;
 
-    @AfterViews
-    protected void afterViews() {
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(R.layout.fragment_wrapper, null);
         if (isInflated) {
-            return;
+            return rootView;
         }
         if (childFragment == null) {
-            return;
+            return rootView;
         }
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         Fragment fragmentById = getChildFragmentManager().findFragmentById(R.id.inner_container);
@@ -32,8 +37,8 @@ public class FragmentWrapper extends Fragment {
                 .addToBackStack(childFragment.getClass().getName())
                 .commit();
         isInflated = true;
+        return rootView;
     }
-
 
     public void loadInnerFragment(Fragment fragment) {
         childFragment = fragment;
@@ -57,7 +62,6 @@ public class FragmentWrapper extends Fragment {
         fragmentWillDisappear();
     }
 
-
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
@@ -69,3 +73,4 @@ public class FragmentWrapper extends Fragment {
     }
 
 }
+
