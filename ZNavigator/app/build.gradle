@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'ZNavigator'
+    bintrayName = 'ZNavigator'
+
+    publishedGroupId = 'com.zach.znavigator'
+    libraryName = 'ZNavigator'
+    artifact = 'app'
+
+    libraryDescription = 'A library to manage fragments in BottomNavigationView'
+
+    siteUrl = 'https://github.com/ZachBublil/ZNavigator'
+    gitUrl = 'https://github.com/ZachBublil/ZNavigator.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'zachbublil'
+    developerName = 'Zach Bublil'
+    developerEmail = 'zachbublil@gmail.com'
+
+    licenseName = 'MIT'
+    licenseUrl = 'hhttps://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -21,7 +45,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.1.0'
 
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

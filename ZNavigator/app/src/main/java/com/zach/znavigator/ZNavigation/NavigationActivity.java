@@ -1,8 +1,6 @@
 package com.zach.znavigator.ZNavigation;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.MenuRes;
-import android.support.annotation.NonNull;
+
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,7 +28,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements
     private LinkedHashMap<Integer, Fragment> rootFragments = new LinkedHashMap<>();
     private List<Fragment> fragmentsStack = new ArrayList<>();
 
-    public void init(LinkedHashMap<Integer, Fragment> fragments, @IdRes int fragmentContainer) {
+    public void init(LinkedHashMap<Integer, Fragment> fragments,int fragmentContainer) {
         this.rootFragments = fragments;
         this.fragmentContainer = fragmentContainer;
         loadFirstTab();
@@ -40,10 +38,10 @@ public abstract class NavigationActivity extends AppCompatActivity implements
         homeReselectEnabled = enable;
     }
 
-    public abstract void tabChanged(@MenuRes int id);
+    public abstract void tabChanged(int id);
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         if (!rootFragments.containsKey(item.getItemId())) {
             return false;
         }
@@ -74,7 +72,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onNavigationItemReselected(@NonNull MenuItem item) {
+    public void onNavigationItemReselected(MenuItem item) {
         if (!homeReselectEnabled) {
             return;
         }
