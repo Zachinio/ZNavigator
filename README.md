@@ -7,8 +7,9 @@ The library also retain the fragments views so switching between tabs never recr
 Quick and easy, first add this line your build.gradle file:
 ```java
 compile 'com.zach.znavigator:1.0.0'
+```
 
-#How to use 
+# How to use 
 For using ZNavigation,First, your Activity where the BottomNavigationView exists should extends NavigationActivit.
 Then, in order the NavigationActivity could manage your tabs you should pass the tabs fragments as a LinkedHashMap.
 ```java
