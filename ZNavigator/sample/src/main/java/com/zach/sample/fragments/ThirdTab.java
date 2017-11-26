@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zach.sample.R;
+import com.zach.znavigator.ZNavigation.ZNavigationFragment;
 
 
 /**
  * Created by Zach on 11/19/2017.
  */
 
-public class ThirdTab extends Fragment {
+public class ThirdTab extends ZNavigationFragment {
 
     @Nullable
     @Override
@@ -31,5 +32,15 @@ public class ThirdTab extends Fragment {
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onFragmentHidden() {
+        /* I care about when this fragment hidden */
+    }
+
+    @Override
+    public void onFragmentShowen() {
+/* I care about when this fragment shows*/
     }
 }

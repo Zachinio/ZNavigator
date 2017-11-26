@@ -1,9 +1,9 @@
 package com.zach.znavigator.ZNavigation;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ public class FragmentWrapper extends Fragment {
 
     Fragment childFragment;
     private boolean isInflated = false;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,18 +57,39 @@ public class FragmentWrapper extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        fragmentWillDisappear();
+        onFragmentHidden();
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        fragmentWillDisappear();
+        if(hidden) {
+            onFragmentHidden();
+        } else {
+            onFragmentShowen();
+        }
     }
 
-    private void fragmentWillDisappear() {
-
+    public void onFragmentHidden() {
+        if (childFragment instanceof ZNavigationFragment) {
+            try {
+                ZNavigationFragment childFrag = (ZNavigationFragment) childFragment;
+                childFrag.onHiddenChanged(true);
+            } catch (Exception e) {
+                Log.d("ZNavigation", "Moved fragment but cant notify about it");
+            }
+        }
     }
 
+    public void onFragmentShowen() {
+        if (childFragment instanceof ZNavigationFragment) {
+            try {
+                ZNavigationFragment childFrag = (ZNavigationFragment) childFragment;
+                childFrag.onHiddenChanged(false);
+            } catch (Exception e) {
+                Log.d("ZNavigation", "Moved fragment but cant notify about it");
+            }
+        }
+    }
 }
 
