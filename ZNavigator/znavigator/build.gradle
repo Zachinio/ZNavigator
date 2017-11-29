@@ -6,7 +6,7 @@ ext {
 
     publishedGroupId = 'com.zach.znavigator'
     libraryName = 'ZNavigator'
-    artifact = 'app'
+    artifact = 'znavigator'
 
     libraryDescription = 'A library to manage fragments in BottomNavigationView'
 
@@ -20,7 +20,7 @@ ext {
     developerEmail = 'zachbublil@gmail.com'
 
     licenseName = 'MIT'
-    licenseUrl = 'hhttps://opensource.org/licenses/MIT'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
     allLicenses = ["MIT"]
 }
 
@@ -31,7 +31,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
